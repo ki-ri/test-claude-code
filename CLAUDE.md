@@ -15,3 +15,7 @@ This is currently an empty testing directory for Claude Code experiments. As the
 ## Architecture
 
 *To be documented as the codebase grows*
+
+## Coding Guidelines
+
+- Always use descriptive variable names (常に説明的な変数名を使用する)
