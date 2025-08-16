@@ -33,3 +33,6 @@ spring-boot-*.jar
 # Temporary files
 *.tmp
 *.temp
+
+# Environment variables (contains sensitive information)
+.env
