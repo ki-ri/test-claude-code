@@ -24,7 +24,6 @@ This is a Spring Boot 3 Kotlin Hello World application that demonstrates modern 
 
 # Run tests
 ./gradlew test
-
 # Run the application
 ./gradlew bootRun
 
