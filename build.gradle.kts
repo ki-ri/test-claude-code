@@ -27,6 +27,7 @@ dependencies {
     implementation(platform("software.amazon.awssdk:bom:2.28.1"))
     implementation("software.amazon.awssdk:s3-transfer-manager")
     implementation("software.amazon.awssdk.crt:aws-crt:0.29.14")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
 }

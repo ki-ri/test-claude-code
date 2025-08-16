@@ -1,7 +1,7 @@
 package com.example.demo
 
 import org.springframework.stereotype.Service
-import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
+import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.async.AsyncRequestBody
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.s3.S3AsyncClient
@@ -12,15 +12,18 @@ import java.nio.file.Path
 import java.util.concurrent.CompletableFuture
 
 @Service
-class S3MultipartUploadService {
+class S3MultipartUploadService(
+    private val awsCredentialsProvider: AwsCredentialsProvider,
+    private val awsRegion: Region
+) {
 
     private val s3AsyncClient: S3AsyncClient
     private val transferManager: S3TransferManager
 
     init {
         s3AsyncClient = S3AsyncClient.crtBuilder()
-            .credentialsProvider(DefaultCredentialsProvider.create())
-            .region(Region.AP_NORTHEAST_1)
+            .credentialsProvider(awsCredentialsProvider)
+            .region(awsRegion)
             .targetThroughputInGbps(20.0)
             .minimumPartSizeInBytes(8 * 1024 * 1024) // 8MB
             .build()

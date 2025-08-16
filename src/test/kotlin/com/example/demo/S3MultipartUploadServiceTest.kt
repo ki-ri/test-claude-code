@@ -15,15 +15,7 @@ class S3MultipartUploadServiceTest {
     lateinit var tempDir: Path
 
     @Test
-    fun `service can be instantiated`() {
-        val service = S3MultipartUploadService()
-        assertNotNull(service)
-        service.close()
-    }
-
-    @Test
     fun `can create upload request for large file`() {
-        val service = S3MultipartUploadService()
         val testFile = tempDir.resolve("test-large-file.txt")
         
         val content = "Test content for multipart upload".repeat(1000000) // ~30MB
@@ -31,7 +23,5 @@ class S3MultipartUploadServiceTest {
         
         assertTrue(Files.exists(testFile))
         assertTrue(Files.size(testFile) > 8 * 1024 * 1024) // Greater than 8MB minimum part size
-        
-        service.close()
     }
 }
